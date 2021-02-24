@@ -123,8 +123,9 @@
                 <v-hover v-slot="{ hover }">
                   <v-card
                     class="mx-auto"
-                    color="grey lighten-4"
+                    color="white"
                     max-width="600"
+                    outlined
                   >
                     <v-img :src="item.img" width="380" height="380">
                       <v-expand-transition>
