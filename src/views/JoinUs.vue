@@ -1,0 +1,127 @@
+<template>
+  <v-main>
+    <v-container>
+      <v-row class="mt-7">
+        <v-col class="offset-md-2 col-md-9">
+          <v-card class="pt-4">
+            <div>
+              <v-card-title class="headline d-inline pa-0 mt-4 ml-4"
+                >联系我们</v-card-title
+              >
+              <div class="d-flex">
+                <v-avatar class="ma-3" size="150" tile>
+                  <v-img
+                    :src="require('@/assets/images/joinUs/lxwm@2x.png')"
+                  ></v-img>
+                </v-avatar>
+                <v-list dense>
+                  <v-list-item-group>
+                    <v-list-item>
+                      <v-list-item-content class="py-0">
+                        全国消费者服务热线：400-8069-039
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-content class="py-0"
+                        >客服微信：tianqitrade001</v-list-item-content
+                      >
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-content class="py-0"
+                        >客服邮箱：tianqitrade001@163.com</v-list-item-content
+                      >
+                    </v-list-item>
+                    <v-list-item
+                      ><v-list-item-content class="py-0"
+                        >商务合作：tainqipet@foxmail.com</v-list-item-content
+                      ></v-list-item
+                    >
+                  </v-list-item-group>
+                </v-list>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="offset-md-2 col-md-9">
+          <v-card class="pt-4">
+            <div>
+              <v-card-title class="headline d-inline pa-0 mt-4 ml-4"
+                >商务加盟</v-card-title
+              >
+              <div class="d-flex">
+                <v-avatar class="ma-3" size="150" tile>
+                  <v-img
+                    :src="require('@/assets/images/joinUs/swhz@2x.png')"
+                  ></v-img>
+                </v-avatar>
+                <v-card-text class="align-center justify-center">
+                  天奇贸易已开放全国代理加盟，欢迎合作洽谈天奇贸易已开放全国代理加盟，欢迎合作洽谈天奇贸易已开放全国代理加盟，欢迎合作洽谈天奇贸易已开放全国代理加盟，欢迎合作洽谈
+                </v-card-text>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="offset-md-2 col-md-9">
+          <v-card class="pt-4">
+            <div>
+              <v-card-title class="headline d-inline pa-0 mt-4 ml-4"
+                >人才招聘</v-card-title
+              >
+              <div class="d-flex">
+                <v-avatar class="ma-3" size="150" tile>
+                  <v-img
+                    :src="require('@/assets/images/joinUs/zxns@2x.png')"
+                  ></v-img>
+                </v-avatar>
+                <v-card-text>
+                  欢迎加入天奇贸易团队，天奇贸易营业的每一天，都在坚持为宠物们提供天然原材料制成的优质食品粮，尊崇天然的价值，立志成为进口宠物粮行业内的标杆传奇。欢迎加入天奇贸易团队
+                </v-card-text>
+              </div>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-main>
+</template>
+
+<script>
+export default {
+  name: "JoinUs",
+  data: () => ({
+    items: [
+      {
+        color: "#1F7087",
+        src: "https://cdn.vuetifyjs.com/images/cards/foster.jpg",
+        title: "Supermodel",
+        artist: "Foster the People",
+      },
+      {
+        color: "#952175",
+        src: "https://cdn.vuetifyjs.com/images/cards/halcyon.png",
+        title: "Halcyon Days",
+        artist: "Ellie Goulding",
+      },
+    ],
+  }),
+};
+</script>
+
+<style lang="scss" scoped>
+.headline {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff9822;
+  }
+}
+</style>

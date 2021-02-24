@@ -11,12 +11,61 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/news',
+    name: 'News',
+    component: () => import('../views/news/News.vue'),
+    children: [
+      {
+        path: '/news/company',
+        name: 'CompanyNews',
+        component: () => import('../views/news/CompanyNews.vue'),
+      },
+      {
+        path: '/news/enterprise',
+        name: 'EnterpriseNews',
+        component: () => import('../views/news/EnterpriseNews.vue')
+      },
+      {
+        path: '/news/newsDetail/:id',
+        name: 'NewsDetail',
+        component: () => import('../views/news/NewsDetail.vue')
+      },
+    ]
+  },
+  {
+    path: '/brands/:type',
+    name: 'Brands',
+    component: () => import('../views/Brands.vue')
+  },
+  {
+    path: '/aboutUs',
+    name: 'AboutUs',
+    component: () => import('../views/AboutUs.vue')
+  },
+  {
+    path: '/securityVerification',
+    name: 'SecurityVerification',
+    component: () => import('../views/SecurityVerification.vue')
+  },
+  {
+    path: '/authorization',
+    name: 'Authorization',
+    component: () => import('../views/Authorization.vue')
+  },
+  {
+    path: '/securityVertification',
+    name: 'SecurityVertification',
+    component: () => import('../views/SecurityVerification.vue')
+  },
+  {
+    path: '/joinUs',
+    name: 'JoinUs',
+    component: () => import('../views/JoinUs.vue')
+  },
+  {
+    path: '/layout',
+    name: 'Layout',
+    component: () => import('../views/Layout.vue')
   }
 ]
 

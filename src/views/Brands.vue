@@ -1,0 +1,155 @@
+<template>
+  <v-main class="brand">
+    <div class="brand-hd" dark>
+      <v-container class="pa-0">
+        <v-img width="100%" height="100%" :src="brandImg"></v-img>
+      </v-container>
+    </div>
+    <v-container class="pa-0 mt-16">
+      <div class="brand-info d-md-flex">
+        <div class="mr-16">
+          <div class="mb-6 brand-info-name d-inline-flex">{{ brandName }}</div>
+          <div class="brand-info-brief">
+            {{ brandIntro ? $t("home." + brandIntro) : "" }}
+            {{ brandBrief ? $t("home." + brandBrief) : "" }}
+          </div>
+        </div>
+        <div>
+          <v-img width="180px" height="180px" :src="brandLogo"></v-img>
+        </div>
+      </div>
+      <div class="brand-relate mt-6">
+        <div class="mb-6 brand-info-name d-inline-flex">相关资料下载</div>
+        <div class="brand-info-brief">
+          {{brandName}}主图、详情页、宣传图等资料下载<v-btn class="ml-2"
+            >点击下载</v-btn
+          >
+        </div>
+      </div>
+      <div
+        class="brand-hot mt-6"
+      >
+        <div class="mb-6 brand-info-name d-inline-flex">热销产品</div>
+        <v-container>
+          <div
+            class="brand-hot-type"
+            v-for="(item, index) in prodList"
+            :key="index"
+          >
+            <div class="brand-hot-title mt-5">{{ item.nameCn }}</div>
+            <div class="brand-hot-info">{{ item.introCn }}</div>
+            <v-row class="brand-hot-img">
+              <v-col md="3" sm="12" v-for="(prod, idx) in item.list" :key="idx">
+                <v-img :src="prod.img"></v-img>
+                <div class="mt-5 text-center">{{ prod.name }}</div>
+              </v-col>
+              <v-spacer></v-spacer>
+            </v-row>
+          </div>
+        </v-container>
+      </div>
+    </v-container>
+  </v-main>
+</template>
+
+<script>
+import { getBrandsList } from "@/apis";
+export default {
+  name: "Brands",
+  data() {
+    return {
+      prodList: [],
+      brandName: "",
+      brandIntro: "",
+      brandBrief: "",
+      brandLogo: "",
+      brandImg: "",
+      id: this.$route.params.type,
+    };
+  },
+  mounted() {
+    this.getBrandsData();
+  },
+
+  watch: {
+    $route(to, from) {
+      this.id = to.params.type;
+      return this.getBrandsData();
+    },
+  },
+  methods: {
+    getBrandsData: function () {
+      let _this = this;
+      getBrandsList().then((res) => {
+        debugger;
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i]["id"] === _this.id) {
+            _this.brandName = res.data[i]["title"];
+            _this.brandIntro = res.data[i]["introLan"];
+            _this.brandBrief = res.data[i]["briefLan"];
+            _this.brandLogo = res.data[i]["logoMid"];
+            _this.brandImg = res.data[i]["banner"];
+            _this.prodList = res.data[i]["product"]
+              ? res.data[i]["product"]
+              : [];
+          }
+        }
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.brand-hd {
+  position: relative;
+  background-color: #000;
+  padding: 18% 50%;
+  .container {
+    position: absolute;
+    top: 0;
+    left: 9%;
+    height: 100%;
+  }
+}
+
+.brand-info-name {
+  position: relative;
+  font-size: 24px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  line-height: 40px;
+  color: #2b2b2b;
+  &:after {
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    content: "";
+    height: 4px;
+    width: 100%;
+    background-color: #ff9822;
+  }
+}
+
+.brand-info-brief {
+  font-size: 16px;
+  font-family: SimSun;
+  line-height: 32px;
+  color: #242424;
+}
+
+.brand-hot {
+  &-title {
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    font-size: 24;
+    font-weight: 600;
+    color: #2b2b2b;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+  }
+  &-info {
+    margin-bottom: 20px;
+  }
+}
+</style>
