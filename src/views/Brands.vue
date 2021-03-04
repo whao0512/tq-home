@@ -1,10 +1,11 @@
 <template>
   <v-main class="brand">
     <div class="brand-hd" dark>
-      <v-container class="pa-0">
+      <v-container class="pa-0" style="">
         <v-img width="100%" height="100%" :src="brandImg"></v-img>
       </v-container>
     </div>
+
     <v-container class="pa-0 mt-16">
       <div class="brand-info d-md-flex">
         <div class="mr-16">
@@ -21,14 +22,13 @@
       <div class="brand-relate mt-6">
         <div class="mb-6 brand-info-name d-inline-flex">相关资料下载</div>
         <div class="brand-info-brief">
-          {{brandName}}主图、详情页、宣传图等资料下载<v-btn class="ml-2"
-            >点击下载</v-btn
-          >
+          {{ brandName }}主图、详情页、宣传图等资料下载
+          <div class="mt-3">
+            <v-btn class="down-btn">点击下载</v-btn>
+          </div>
         </div>
       </div>
-      <div
-        class="brand-hot mt-6"
-      >
+      <div class="brand-hot mt-6">
         <div class="mb-6 brand-info-name d-inline-flex">热销产品</div>
         <v-container>
           <div
@@ -81,7 +81,6 @@ export default {
     getBrandsData: function () {
       let _this = this;
       getBrandsList().then((res) => {
-        debugger;
         for (let i = 0; i < res.data.length; i++) {
           if (res.data[i]["id"] === _this.id) {
             _this.brandName = res.data[i]["title"];
@@ -104,13 +103,6 @@ export default {
 .brand-hd {
   position: relative;
   background-color: #000;
-  padding: 18% 50%;
-  .container {
-    position: absolute;
-    top: 0;
-    left: 9%;
-    height: 100%;
-  }
 }
 
 .brand-info-name {
@@ -151,5 +143,14 @@ export default {
   &-info {
     margin-bottom: 20px;
   }
+}
+
+.down-btn {
+  width: 90px;
+  height: 30px;
+  background: linear-gradient(191deg, #ff8800 0%, #ffb664 100%);
+  box-shadow: 0px 3px 6px rgba(39, 29, 18, 0.2);
+  border-radius: 2px;
+  color: #fff;
 }
 </style>

@@ -18,7 +18,7 @@
         <v-tabs
           v-model="currentItem"
           show-arrows
-          fixed-tabs
+          center-active
           slider-color="white"
         >
           <v-tab
@@ -95,7 +95,7 @@ export default {
   color: #2b2b2b;
   &:after {
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     content: "";
     width: 100%;
     height: 4px;
@@ -104,5 +104,13 @@ export default {
 }
 .brand-info {
   line-height: 30px;
+}
+.acting-brands {
+  .v-tab {
+    font-size: 0.475em;
+  }
+  .v-tab--active {
+    color: #ff9822!important;
+  }
 }
 </style>

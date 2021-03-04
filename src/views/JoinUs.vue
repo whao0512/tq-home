@@ -1,5 +1,5 @@
 <template>
-  <v-main>
+  <v-main class="join-us">
     <v-container>
       <v-row class="mt-7">
         <v-col class="offset-md-2 col-md-9">
@@ -66,7 +66,7 @@
       </v-row>
       <v-row>
         <v-col class="offset-md-2 col-md-9">
-          <v-card class="pt-4">
+          <v-card class="pt-4 no-border">
             <div>
               <v-card-title class="headline d-inline pa-0 mt-4 ml-4"
                 >人才招聘</v-card-title
@@ -122,6 +122,19 @@ export default {
     width: 100%;
     height: 2px;
     background-color: #ff9822;
+  }
+}
+
+.join-us {
+  .v-sheet.v-card:not(.v-sheet--outlined) {
+    box-shadow: none;
+  }
+  .v-sheet.v-card {
+    border-bottom: 1px solid #bdbdbd;
+    border-radius: 0;
+    &.no-border {
+      border-bottom: none;
+    }
   }
 }
 </style>

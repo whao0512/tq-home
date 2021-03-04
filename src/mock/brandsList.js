@@ -581,8 +581,26 @@ let brandsList = [
         ],
         authorizedImg: require('@/assets/images/brands/authorization/Little Bigpaw.jpg')
     },
-    { title: "Raw RAWR", id: "9", avatar: require("@/assets/images/nav/raw rawr@2x.png"), banner: require('@/assets/images/brands/RAW-RAWR.jpg'), logoMid: require('@/assets/images/brands/logo/raw-rawr.jpg'), introLan: "rawRawrtIntro", briefLan: "rawRawrtBrief", authorizedList: [] },
-    { title: "GEORGE AND BOBS", id: "10", avatar: require("@/assets/images/nav/George and bobs@2x.png"), banner: require('@/assets/images/brands/GEOR.jpg'), logoMid: require('@/assets/images/brands/logo/george-and-bobs.jpg'), introLan: "georgeAndBobsIntro", briefLan: "georgeAndBobsBrief", authorizedList: [] },
+    {
+        title: "Raw RAWR",
+        id: "9",
+        avatar: require("@/assets/images/nav/raw rawr@2x.png"),
+        banner: require('@/assets/images/brands/RAW-RAWR.jpg'),
+        logoMid: require('@/assets/images/brands/logo/raw-rawr.jpg'),
+        introLan: "rawRawrIntro",
+        briefLan: "rawRawrBrief",
+        authorizedList: []
+    },
+    {
+        title: "GEORGE AND BOBS",
+        id: "10",
+        avatar: require("@/assets/images/nav/George and bobs@2x.png"),
+        banner: require('@/assets/images/brands/GEOR.jpg'),
+        logoMid: require('@/assets/images/brands/logo/george-and-bobs.jpg'),
+        introLan: "georgeAndBobsIntro",
+        briefLan: "georgeAndBobsBrief",
+        authorizedList: []
+    },
 ]
 
 export default {

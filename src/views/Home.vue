@@ -2,12 +2,17 @@
   <div class="home">
     <div class="carousel">
       <v-container class="pa-0">
-        <v-carousel cycle hide-delimiter-background show-arrows-on-hover>
+        <v-carousel
+          cycle
+          hide-delimiter-background
+          show-arrows-on-hover
+          height="30%"
+        >
           <v-carousel-item
             v-for="(banner, i) in bannerList"
             :key="i"
             :src="banner.banner"
-            :to="{path: `/brands/${banner.id}`}"
+            :to="{ path: `/brands/${banner.id}` }"
           >
           </v-carousel-item>
         </v-carousel>
@@ -17,7 +22,7 @@
       <v-container class="pa-0">
         <div class="mt-5">
           <div style="text-align: center">
-            <div class="pet-title d-inline-flex">{{$t("home.petFood")}}</div>
+            <div class="pet-title d-inline-flex">{{ $t("home.petFood") }}</div>
           </div>
           <v-container class="pa-0">
             <v-row class="pet-food mt-9">
@@ -25,6 +30,8 @@
                 cols="12"
                 sm="12"
                 md="4"
+                lg="4"
+                xl="3"
                 v-for="(item, idx) in foodList"
                 :key="idx"
               >
@@ -34,13 +41,15 @@
                     color="white"
                     max-width="600"
                     outlined
+                    :to="{ path: `/brands/${item.id}` }"
                   >
                     <v-img :src="item.img" width="380" height="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out indigo lighten-4 v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
                           style="height: 100%"
+                          v-bind:style="{ 'background-color': item.randomBg }"
                         >
                           {{ $t("home." + item.briefLan) }}
                         </div>
@@ -63,7 +72,9 @@
         </div>
         <div class="mt-5">
           <div style="text-align: center">
-            <div class="pet-title d-inline-flex">{{$t("home.petSnacks")}}</div>
+            <div class="pet-title d-inline-flex">
+              {{ $t("home.petSnacks") }}
+            </div>
           </div>
           <v-container class="pa-0">
             <v-row class="pet-snacks mt-9">
@@ -71,6 +82,8 @@
                 cols="12"
                 sm="12"
                 md="4"
+                lg="4"
+                xl="3"
                 v-for="(item, idx) in snacksList"
                 :key="idx"
               >
@@ -80,13 +93,15 @@
                     color="white"
                     max-width="600"
                     outlined
+                    :to="{ path: '/brands/' + item.id }"
                   >
                     <v-img :src="item.img" width="380" height="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out blue lighten-3 v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
                           style="height: 100%"
+                          v-bind:style="{ 'background-color': item.randomBg }"
                         >
                           {{ $t("home." + item.briefLan) }}
                         </div>
@@ -109,7 +124,7 @@
         </div>
         <div class="pet-can mt-5">
           <div style="text-align: center">
-            <div class="pet-title d-inline-flex">{{$t("home.petCan")}}</div>
+            <div class="pet-title d-inline-flex">{{ $t("home.petCan") }}</div>
           </div>
           <v-container>
             <v-row class="pet-can mt-9">
@@ -117,6 +132,8 @@
                 cols="12"
                 sm="12"
                 md="4"
+                lg="4"
+                xl="3"
                 v-for="(item, idx) in canList"
                 :key="idx"
               >
@@ -126,12 +143,14 @@
                     color="white"
                     max-width="600"
                     outlined
+                    :to="{ path: '/brands/' + item.id }"
                   >
                     <v-img :src="item.img" width="380" height="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out pink lighten-3 v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
+                          v-bind:style="{ 'background-color': item.randomBg }"
                           style="height: 100%"
                         >
                           {{ $t("home." + item.briefLan) }}
@@ -155,7 +174,9 @@
         </div>
         <div class="mt-5 mb-16">
           <div style="text-align: center">
-            <div class="pet-title d-inline-flex">{{$t("home.petHealth")}}</div>
+            <div class="pet-title d-inline-flex">
+              {{ $t("home.petHealth") }}
+            </div>
           </div>
           <v-container>
             <v-row class="pet-healthcare mt-9">
@@ -163,6 +184,8 @@
                 cols="12"
                 sm="12"
                 md="4"
+                lg="4"
+                xl="3"
                 v-for="(item, idx) in healthCareList"
                 :key="idx"
               >
@@ -172,13 +195,15 @@
                     color="white"
                     max-width="600"
                     outlined
+                    :to="{ path: '/brands/' + item.id }"
                   >
                     <v-img :src="item.img" width="380" height="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out purple lighten-4 v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
                           style="height: 100%"
+                          v-bind:style="{ 'background-color': item.randomBg }"
                         >
                           {{ $t("home." + item.briefLan) }}
                         </div>
@@ -282,10 +307,10 @@ export default {
 
 .prod-name {
   position: relative;
-  font-size: 20px;
+  font-size: 24px;
   font-family: Source Han Sans CN;
   font-weight: bold;
-  color: #242424;
+  color: #242424 !important;
   &:before {
     content: "";
     position: absolute;
@@ -297,7 +322,7 @@ export default {
   }
 }
 .prod-intro {
-  font-size: 16px;
+  font-size: 20px;
   font-family: SimSun;
   line-height: 32px;
   color: #242424;

@@ -45,7 +45,7 @@
               >
             </v-list-item>
             <v-list-item :to="{ name: 'CompanyNews' }">
-              <v-list-item-title>{{ $t(`nav.companyNews`)}}</v-list-item-title>
+              <v-list-item-title>{{ $t(`nav.companyNews`) }}</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
         </v-list>
@@ -93,9 +93,18 @@
       <div :class="{ active: $route.path.indexOf('/joinUs') > -1 }">
         <router-link :to="{ name: 'JoinUs' }">{{ $t("nav.join") }}</router-link>
       </div>
-      <div class="language">
-        <a class="px-1" @click="languageChange('cn')">{{ $t("nav.cn") }}</a
-        ><a class="px-1" @click="languageChange('en')">EN</a>
+      <div class="language ml-16">
+        <a
+          class="px-1"
+          v-bind:class="{ 'language-active': language == 'cn' }"
+          @click="languageChange('cn')"
+          >{{ $t("nav.cn") }}</a
+        ><a
+          class="px-1"
+          v-bind:class="{ 'language-active': language == 'en' }"
+          @click="languageChange('en')"
+          >EN</a
+        >
       </div>
     </div>
   </v-container>
@@ -122,6 +131,7 @@ export default {
     languageChange: function (type) {
       localStorage.setItem("language", type);
       this.$i18n.locale = type;
+      this.language = type;
     },
     newsType: function (type) {
       if (type == "companyNews") {
@@ -208,5 +218,11 @@ export default {
   //     padding: 25% 0 !important;
   //   }
   // }
+}
+
+.language-active {
+  height: 12px;
+  font-family: Source Han Sans CN;
+  color: #8c8c8c!important;
 }
 </style>

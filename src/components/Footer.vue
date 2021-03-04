@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <div class="contact-us">
+        <div class="contact-us mt-4">
             <div class="d-inline-flex">联系我们</div>
         </div>
         <div class="contact-way d-flex justify-center mt-5 mb-14">
