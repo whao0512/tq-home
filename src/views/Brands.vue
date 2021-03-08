@@ -6,9 +6,9 @@
       </v-container>
     </div>
 
-    <v-container class="pa-0 mt-16">
-      <div class="brand-info d-md-flex">
-        <div class="mr-16">
+    <v-container>
+      <div class="brand-info d-md-flex d-sm-block">
+        <div>
           <div class="mb-6 brand-info-name d-inline-flex">{{ brandName }}</div>
           <div class="brand-info-brief">
             {{ brandIntro ? $t("home." + brandIntro) : "" }}
@@ -28,8 +28,8 @@
           </div>
         </div>
       </div>
-      <div class="brand-hot mt-6">
-        <div class="mb-6 brand-info-name d-inline-flex">热销产品</div>
+      <div class="brand-hot">
+        <div class="brand-info-name d-inline-flex">热销产品</div>
         <v-container>
           <div
             class="brand-hot-type"
@@ -100,57 +100,122 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.brand-hd {
-  position: relative;
-  background-color: #000;
-}
-
-.brand-info-name {
-  position: relative;
-  font-size: 24px;
-  font-family: Source Han Sans CN;
-  font-weight: bold;
-  line-height: 40px;
-  color: #2b2b2b;
-  &:after {
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    content: "";
-    height: 4px;
-    width: 100%;
-    background-color: #ff9822;
+@media (min-width: 960px) {
+  .brand-hd {
+    position: relative;
+    background-color: #000;
   }
-}
 
-.brand-info-brief {
-  font-size: 16px;
-  font-family: SimSun;
-  line-height: 32px;
-  color: #242424;
-}
-
-.brand-hot {
-  &-title {
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    font-size: 24;
-    font-weight: 600;
+  .brand-info-name {
+    position: relative;
+    font-size: 24px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    line-height: 50px;
     color: #2b2b2b;
-    text-align: center;
-    border-bottom: 1px solid #dbdbdb;
+    &:after {
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      content: "";
+      height: 4px;
+      width: 100%;
+      background-color: #ff9822;
+    }
   }
-  &-info {
-    margin-bottom: 20px;
+
+  .brand-info-brief {
+    font-size: 16px;
+    font-family: SimSun;
+    line-height: 32px;
+    color: #242424;
+  }
+
+  .brand-hot {
+    margin-top: 24px;
+    &-title {
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-size: 24;
+      font-weight: 600;
+      color: #2b2b2b;
+      text-align: center;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    &-info {
+      margin-bottom: 20px;
+    }
+  }
+
+  .down-btn {
+    width: 90px;
+    height: 30px;
+    background: linear-gradient(191deg, #ff8800 0%, #ffb664 100%);
+    box-shadow: 0px 3px 6px rgba(39, 29, 18, 0.2);
+    border-radius: 2px;
+    color: #fff;
+  }
+  .brand-info {
+    margin-top: 30px;
   }
 }
+@media (max-width: 959px) {
+  .brand-hd {
+    position: relative;
+    background-color: #000;
+  }
 
-.down-btn {
-  width: 90px;
-  height: 30px;
-  background: linear-gradient(191deg, #ff8800 0%, #ffb664 100%);
-  box-shadow: 0px 3px 6px rgba(39, 29, 18, 0.2);
-  border-radius: 2px;
-  color: #fff;
+  .brand-info-name {
+    position: relative;
+    font-size: 24px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    line-height: 50px;
+    color: #2b2b2b;
+    &:after {
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      content: "";
+      height: 4px;
+      width: 100%;
+      background-color: #ff9822;
+    }
+  }
+
+  .brand-info-brief {
+    font-size: 16px;
+    font-family: SimSun;
+    line-height: 28px;
+    color: #242424;
+  }
+
+  .brand-hot {
+    margin-top: 20px;
+    &-title {
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      font-size: 24;
+      font-weight: 600;
+      color: #2b2b2b;
+      text-align: center;
+      border-bottom: 1px solid #dbdbdb;
+    }
+    &-info {
+      margin-bottom: 20px;
+    }
+  }
+
+  .down-btn {
+    width: 90px;
+    height: 30px;
+    background: linear-gradient(191deg, #ff8800 0%, #ffb664 100%);
+    box-shadow: 0px 3px 6px rgba(39, 29, 18, 0.2);
+    border-radius: 2px;
+    color: #fff;
+  }
+  .brand-info {
+    margin-top: 10px;
+  }
 }
 </style>

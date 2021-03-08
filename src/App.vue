@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <div app class="pa-0 ma-0 grey darken-4" >
+    <div app class="pa-0 ma-0 grey darken-4">
       <!-- -->
       <app-header></app-header>
     </div>
@@ -12,7 +12,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-  
+
     <div app class="black pt-23 pb-28">
       <app-footer></app-footer>
     </div>
@@ -22,18 +22,33 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import HelloWorld from "@/components/HelloWorld.vue"
+import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     appHeader: Header,
     appFooter: Footer,
-    HelloWorld
+    HelloWorld,
   },
 
-  data: () => ({
-    
-  }),
+  data: () => ({}),
+
+  mounted() {
+    if (this._isMobile()) {
+      localStorage.setItem('isMobile', true)
+    } else {
+      localStorage.setItem('isMobile', false)
+    }
+  },
+
+  methods: {
+    _isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      return flag;
+    },
+  },
 };
 </script>

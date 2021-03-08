@@ -1,11 +1,27 @@
 <template>
   <div class="home">
     <div class="carousel">
-      <v-container class="pa-0">
+      <v-container class="pa-0 d-none d-sm-none d-md-flex"  >
         <v-carousel
           cycle
           hide-delimiter-background
           show-arrows-on-hover
+          height="30%"
+        >
+          <v-carousel-item
+            v-for="(banner, i) in bannerList"
+            :key="i"
+            :src="banner.banner"
+            :to="{ path: `/brands/${banner.id}` }"
+          >
+          </v-carousel-item>
+        </v-carousel>
+      </v-container>
+      <v-container class="pa-0 d-flex d-sm-flex d-md-none">
+        <v-carousel
+         hide-delimiters
+          cycle
+          :show-arrows="true"
           height="30%"
         >
           <v-carousel-item
@@ -24,8 +40,8 @@
           <div style="text-align: center">
             <div class="pet-title d-inline-flex">{{ $t("home.petFood") }}</div>
           </div>
-          <v-container class="pa-0">
-            <v-row class="pet-food mt-9">
+          <v-container>
+            <v-row class="pet-food">
               <v-col
                 cols="12"
                 sm="12"
@@ -76,8 +92,8 @@
               {{ $t("home.petSnacks") }}
             </div>
           </div>
-          <v-container class="pa-0">
-            <v-row class="pet-snacks mt-9">
+          <v-container>
+            <v-row class="pet-snacks">
               <v-col
                 cols="12"
                 sm="12"
@@ -127,7 +143,7 @@
             <div class="pet-title d-inline-flex">{{ $t("home.petCan") }}</div>
           </div>
           <v-container>
-            <v-row class="pet-can mt-9">
+            <v-row class="pet-can">
               <v-col
                 cols="12"
                 sm="12"
@@ -179,7 +195,7 @@
             </div>
           </div>
           <v-container>
-            <v-row class="pet-healthcare mt-9">
+            <v-row class="pet-healthcare">
               <v-col
                 cols="12"
                 sm="12"
@@ -234,18 +250,12 @@ import { bannerList, productList } from "@/apis";
 export default {
   name: "Home",
   data: () => ({
-    colors: [
-      "indigo",
-      "warning",
-      "pink darken-2",
-      "red lighten-1",
-      "deep-purple accent-4",
-    ],
     bannerList: [],
     foodList: [],
     snacksList: [],
     canList: [],
     healthCareList: [],
+    isMobile: localStorage.getItem('isMobile')
   }),
   mounted() {
     this.getBannerList();
