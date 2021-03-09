@@ -95,6 +95,12 @@ export default {
   .company-content {
     margin-top: 39px;
     border-top: 1px solid #dbdbdb;
+    .v-divider--inset:not(.v-divider--vertical) {
+      margin-left: 0!important;
+    }
+    .v-divider--inset:not(.v-divider--vertical) {
+      max-width: 100%;
+    }
     &-title {
       font-size: 30px;
       font-family: Source Han Sans CN;
@@ -155,6 +161,12 @@ export default {
   .company-content {
     margin-top: 20px;
     border-top: 1px solid #dbdbdb;
+    .v-divider--inset:not(.v-divider--vertical) {
+      margin-left: 0!important;
+    }
+    .v-divider--inset:not(.v-divider--vertical) {
+      max-width: 100%;
+    }
     &-title {
       font-size: 18px;
       font-family: Source Han Sans CN;

@@ -48,7 +48,7 @@ const routes = [
     component: () => import('../views/SecurityVerification.vue')
   },
   {
-    path: '/authorization',
+    path: '/authorization/:type',
     name: 'Authorization',
     component: () => import('../views/Authorization.vue')
   },
@@ -71,6 +71,10 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+router.afterEach(route=> {
+  window.scrollTo(0, 0)
 })
 
 export default router

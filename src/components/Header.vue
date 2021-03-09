@@ -116,8 +116,9 @@
       </div>
     </v-container>
     <v-container class="d-md-none d-sm-flex d-flex header">
-       <div
+      <div
         class="d-flex"
+        style="margin: 0 auto"
         @click="
           () => {
             this.$router.push('/');
@@ -181,64 +182,128 @@ export default {
 };
 </script>
 <style lang="scss">
-.header {
-  color: #fff;
-  .active {
-    background-color: #ff9822;
-  }
-  .router-link-active {
-    color: #ff9822;
-  }
-  .nav {
-    height: 80px;
-    line-height: 58px;
-    .v-menu + div {
-      padding: 12px;
+@media screen and (min-width: 960px) {
+  .header {
+    color: #fff;
+    .active {
+      background-color: #ff9822;
     }
-    > div {
-      a {
-        display: inline-block;
-        height: 100%;
+    .router-link-active {
+      color: #ff9822;
+    }
+    .nav {
+      height: 80px;
+      line-height: 58px;
+      .v-menu + div {
         padding: 12px;
       }
-      &:hover:not(:last-child) {
-        background-color: #ff9822;
+      > div {
+        a {
+          display: inline-block;
+          height: 100%;
+          padding: 12px;
+        }
+        &:hover:not(:last-child) {
+          background-color: #ff9822;
+        }
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
       }
     }
-    a {
-      color: #fff;
-      text-decoration: none;
+    .logo {
+      height: 80px;
+      padding: 15px 0;
     }
-  }
-  .logo {
-    height: 80px;
-    padding: 15px 0;
-  }
 
-  .company-name {
-    font-size: 20px;
+    .company-name {
+      font-size: 20px;
 
-    &_en {
-      font-family: Source Han Sans CN;
-      font-size: 15px;
+      &_en {
+        font-family: Source Han Sans CN;
+        font-size: 15px;
+      }
     }
-  }
 
-  .language {
-    a + a {
-      &:before {
-        content: "";
-        display: inline-block;
-        width: 0;
-        margin-right: 6px;
-        font-size: 0;
-        padding: 8px 0 4px 0;
-        border-left: 1px solid transparent;
-        background-color: #fff;
+    .language {
+      a + a {
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 0;
+          margin-right: 6px;
+          font-size: 0;
+          padding: 8px 0 4px 0;
+          border-left: 1px solid transparent;
+          background-color: #fff;
+        }
       }
     }
   }
 }
+
+@media screen and (max-width: 959px) {
+  .header {
+    color: #fff;
+    .active {
+      background-color: #ff9822;
+    }
+    .router-link-active {
+      color: #ff9822;
+    }
+    .nav {
+      height: 80px;
+      line-height: 58px;
+      .v-menu + div {
+        padding: 12px;
+      }
+      > div {
+        a {
+          display: inline-block;
+          height: 100%;
+          padding: 12px;
+        }
+        &:hover:not(:last-child) {
+          background-color: #ff9822;
+        }
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    .logo {
+      height: 80px;
+      padding: 15px 0;
+    }
+
+    .company-name {
+      font-size: 20px;
+
+      &_en {
+        font-family: Source Han Sans CN;
+        font-size: 15px;
+      }
+    }
+
+    .language {
+      a + a {
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 0;
+          margin-right: 6px;
+          font-size: 0;
+          padding: 8px 0 4px 0;
+          border-left: 1px solid transparent;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
 .head-menu-list {
   .v-image__image {
     background-size: contain !important;

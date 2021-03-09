@@ -1,8 +1,8 @@
 <template>
   <v-main>
     <v-container>
-      <div class="about-us mt-16 mb-9">
-        <div class="about-us-title d-inline-flex mb-10">关于我们</div>
+      <div class="about-us">
+        <div class="about-us-title d-inline-flex mb-4">关于我们</div>
         <p>
           天奇贸易营业的每一天，都在坚持为宠物们提供天然原材料制成的优质食品粮，尊崇天然的价值，立志成为进口宠物粮行业内的标杆传奇。
         </p>
@@ -14,7 +14,7 @@
         </p>
       </div>
       <div class="acting-brands">
-        <div class="acting-brands-title d-inline-flex mb-10">代理品牌</div>
+        <div class="acting-brands-title d-inline-flex mb-4">代理品牌</div>
         <v-tabs
           v-model="currentItem"
           show-arrows

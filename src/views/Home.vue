@@ -59,7 +59,7 @@
                     outlined
                     :to="{ path: `/brands/${item.id}` }"
                   >
-                    <v-img :src="item.img" width="380" height="380">
+                    <v-img :src="item.img" width="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
@@ -111,7 +111,7 @@
                     outlined
                     :to="{ path: '/brands/' + item.id }"
                   >
-                    <v-img :src="item.img" width="380" height="380">
+                    <v-img :src="item.img" width="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
@@ -161,7 +161,7 @@
                     outlined
                     :to="{ path: '/brands/' + item.id }"
                   >
-                    <v-img :src="item.img" width="380" height="380">
+                    <v-img :src="item.img" width="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"
@@ -213,7 +213,7 @@
                     outlined
                     :to="{ path: '/brands/' + item.id }"
                   >
-                    <v-img :src="item.img" width="380" height="380">
+                    <v-img :src="item.img" width="380">
                       <v-expand-transition>
                         <div
                           v-if="hover"

@@ -1,13 +1,13 @@
 <template>
   <v-main class="brand">
     <div class="brand-hd" dark>
-      <v-container class="pa-0" style="">
+      <v-container class="pa-0">
         <v-img width="100%" height="100%" :src="brandImg"></v-img>
       </v-container>
     </div>
 
     <v-container>
-      <div class="brand-info d-md-flex d-sm-block">
+      <div class="brand-info d-md-flex d-sm-block d-block">
         <div>
           <div class="mb-6 brand-info-name d-inline-flex">{{ brandName }}</div>
           <div class="brand-info-brief">
@@ -15,11 +15,11 @@
             {{ brandBrief ? $t("home." + brandBrief) : "" }}
           </div>
         </div>
-        <div>
+        <div class="brand-info-logo">
           <v-img width="180px" height="180px" :src="brandLogo"></v-img>
         </div>
       </div>
-      <div class="brand-relate mt-6">
+      <div class="brand-relate mt-6 d-none d-sm-none d-md-block">
         <div class="mb-6 brand-info-name d-inline-flex">相关资料下载</div>
         <div class="brand-info-brief">
           {{ brandName }}主图、详情页、宣传图等资料下载
@@ -32,7 +32,7 @@
         <div class="brand-info-name d-inline-flex">热销产品</div>
         <v-container>
           <div
-            class="brand-hot-type"
+            class="brand-hot-type d-none d-sm-none d-md-block"
             v-for="(item, index) in prodList"
             :key="index"
           >
@@ -45,6 +45,24 @@
               </v-col>
               <v-spacer></v-spacer>
             </v-row>
+          </div>
+          <div
+            class="brand-hot-type d-block d-sm-block d-md-none"
+            v-for="(item, index) in prodList"
+            :key="index"
+          >
+            <div class="brand-hot-title mt-5">{{ item.nameCn }}</div>
+            <div class="brand-hot-info">{{ item.introCn }}</div>
+            <v-carousel hide-delimiters :show-arrows="true" height="30%">
+              <v-carousel-item
+                v-for="(prod, idx) in item.list"
+                :key="idx"
+                :src="prod.img"
+                :value="prod.name"
+              >
+                <div>{{ prod.name }}</div>
+              </v-carousel-item>
+            </v-carousel>
           </div>
         </v-container>
       </div>
@@ -145,6 +163,9 @@ export default {
     &-info {
       margin-bottom: 20px;
     }
+    &-type {
+      border-bottom: 1px solid #dbdbdb;
+    }
   }
 
   .down-btn {
@@ -186,23 +207,40 @@ export default {
   .brand-info-brief {
     font-size: 16px;
     font-family: SimSun;
-    line-height: 28px;
+    line-height: 30px;
     color: #242424;
   }
 
+  .brand-info-logo {
+    > div {
+      margin: 0 auto;
+    }
+  }
   .brand-hot {
     margin-top: 20px;
     &-title {
       padding-bottom: 12px;
-      margin-bottom: 20px;
-      font-size: 24;
+      font-size: 24px;
       font-weight: 600;
       color: #2b2b2b;
       text-align: center;
-      border-bottom: 1px solid #dbdbdb;
     }
     &-info {
       margin-bottom: 20px;
+      line-height: 30px;
+    }
+    .v-responsive__content {
+      > div {
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        color: #242424;
+        font-size: 14px;
+      }
+    }
+    &-type {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dbdbdb;
     }
   }
 

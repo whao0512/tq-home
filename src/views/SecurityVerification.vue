@@ -3,7 +3,7 @@
     <v-container>
       <div class="security-verification-title">防伪查询</div>
       <v-row class="mt-4">
-        <v-col cols="12" sm="6" md="3">
+        <v-col cols="12" sm="12" md="3" class="py-0">
           <v-text-field
             label="请输入防伪标签上的编码"
             placeholder="请输入防伪标签上的编码"
@@ -13,7 +13,7 @@
             v-model="inputValue"
           ></v-text-field>
         </v-col>
-        <v-col md="1">
+        <v-col md="1" class="py-0">
           <v-btn
             class="query-btn"
             elevation="2"
@@ -23,7 +23,7 @@
           >
         </v-col>
       </v-row>
-      <div>
+      <div class="mt-4">
         <div class="security-verification-title mb-3">查询说明</div>
         <div class="security-verification-tips">
           1. 正确输入16位防伪码即可查询
@@ -32,7 +32,7 @@
           2. 请刮开防伪标签上的覆盖层，将数字编号输入，即可验证真伪
         </div>
       </div>
-      <v-row class="logo">
+      <v-row class="logo d-none d-sm-none d-md-block">
         <v-col v-for="(n,index) in brandsList" :key="index" class="d-flex child-flex" md="1" lg="1s">
           <v-img
             :src="n.avatar"

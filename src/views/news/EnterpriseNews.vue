@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (min-width: 960) {
+@media only screen and (min-width: 960px) {
   .enterprise-title {
     position: relative;
     margin-top: 37px;
