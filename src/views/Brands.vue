@@ -33,8 +33,8 @@
         <v-container>
           <div
             class="brand-hot-type d-none d-sm-none d-md-block"
-            v-for="(item, index) in prodList"
-            :key="index"
+            v-for="item in prodList"
+            :key="item.title"
           >
             <div class="brand-hot-title mt-5">{{ item.nameCn }}</div>
             <div class="brand-hot-info">{{ item.introCn }}</div>

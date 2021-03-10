@@ -16,24 +16,22 @@
     <div app class="black pt-23 pb-28">
       <app-footer></app-footer>
     </div>
-    <v-fab-transition>
-      <v-btn
-        fab
-        large
-        dark
-        bottom
-        left
-        class="v-btn--example d-block d-sm-block d-md-none"
-        @click.stop="drawer = !drawer"
-      >
-        <v-icon>mdi-share-variant</v-icon>
-      </v-btn>
-    </v-fab-transition>
+    <v-btn
+      fab
+      large
+      dark
+      bottom
+      left
+      class="v-btn--example d-block d-sm-block d-md-none"
+      @click.stop="drawer = !drawer"
+    >
+      <v-icon>mdi-share-variant</v-icon>
+    </v-btn>
     <v-navigation-drawer
       class="drawer-menu"
       v-model="drawer"
-      height="100vh"
       fixed
+      height="100vh"
       temporary
     >
       <v-list-item>
@@ -42,32 +40,31 @@
         </v-list-item-content>
       </v-list-item>
       <v-list dense>
-        <v-expansion-panels>
-          <div class="v-expansion-panel">
-            <router-link
-              class="v-expansion-panel-header"
-              :to="{ name: 'AboutUs' }"
-              >{{ $t("nav.aboutUs") }}</router-link
-            >
-          </div>
+        <v-expansion-panels v-model="panel" accordion>
+          <v-expansion-panel>
+            <v-expansion-panel-header hide-actions>
+              <router-link :to="{ name: 'AboutUs' }">{{
+                $t("nav.aboutUs")
+              }}</router-link>
+            </v-expansion-panel-header>
+          </v-expansion-panel>
           <v-expansion-panel>
             <v-expansion-panel-header
-              :class="{ active: $route.path.indexOf('/news/') > -1 }"
+              :class="{ 'panel-active': $route.path.indexOf('/news/') > -1 }"
             >
               {{ $t("nav.news") }}
             </v-expansion-panel-header>
-            <v-expansion-panel-content>
-              <v-list dense>
+            <v-expansion-panel-content eager>
+              <v-list dense class="head-menu-list">
                 <v-list-item-group color="primary">
-                  <v-list-item :to="{ name: 'EnterpriseNews' }">
+                  <v-list-item
+                    v-for="item in newsMenuList"
+                    :key="item.title"
+                    :to="{ name: item.router }"
+                  >
                     <v-list-item-title>
-                      {{ $t(`nav.enterpriseBulletin`) }}</v-list-item-title
+                      {{ $t(`nav.${item.lan}`) }}</v-list-item-title
                     >
-                  </v-list-item>
-                  <v-list-item :to="{ name: 'CompanyNews' }">
-                    <v-list-item-title>{{
-                      $t(`nav.companyNews`)
-                    }}</v-list-item-title>
                   </v-list-item>
                 </v-list-item-group>
               </v-list>
@@ -75,15 +72,15 @@
           </v-expansion-panel>
           <v-expansion-panel>
             <v-expansion-panel-header
-              :class="{ active: $route.path.indexOf('/brands/') > -1 }"
+              :class="{ 'panel-active': $route.path.indexOf('/brands/') > -1 }"
             >
               {{ $t("nav.brands") }}
             </v-expansion-panel-header>
-            <v-expansion-panel-content>
+            <v-expansion-panel-content eager>
               <v-list dense class="head-menu-list">
                 <v-list-item-group color="primary">
                   <v-list-item
-                    v-for="(item, index) in brandList"
+                    v-for="(item, index) in brandMenuList"
                     :key="index"
                     :to="{ path: '/brands/' + item.id }"
                   >
@@ -98,16 +95,18 @@
           </v-expansion-panel>
           <v-expansion-panel>
             <v-expansion-panel-header
-              :class="{ active: $route.path.indexOf('/authorization') > -1 }"
+              :class="{
+                'panel-active': $route.path.indexOf('/authorization') > -1,
+              }"
             >
               {{ $t("nav.authorized") }}
             </v-expansion-panel-header>
-            <v-expansion-panel-content>
+            <v-expansion-panel-content eager>
               <v-list dense class="head-menu-list">
                 <v-list-item-group color="primary">
                   <v-list-item
-                    v-for="(item, index) in brandList"
-                    :key="index"
+                    v-for="item in brandMenuList"
+                    :key="item.title"
                     :to="{ path: '/authorization/' + item.id }"
                   >
                     <v-list-item-avatar tile>
@@ -119,22 +118,103 @@
               </v-list>
             </v-expansion-panel-content>
           </v-expansion-panel>
-          <div class="v-expansion-panel">
-            <router-link
-              class="v-expansion-panel-header"
-              :to="{ name: 'SecurityVerification' }"
-              >{{ $t("nav.protect") }}</router-link
-            >
-          </div>
-          <div class="v-expansion-panel">
-            <router-link
-              class="v-expansion-panel-header"
-              :to="{ name: 'JoinUs' }"
-              >{{ $t("nav.join") }}</router-link
-            >
-          </div>
+          <v-expansion-panel>
+            <v-expansion-panel-header hide-actions>
+              <router-link :to="{ name: 'SecurityVerification' }">{{
+                $t("nav.protect")
+              }}</router-link>
+            </v-expansion-panel-header>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header hide-actions>
+              <router-link :to="{ name: 'JoinUs' }">{{
+                $t("nav.join")
+              }}</router-link>
+            </v-expansion-panel-header>
+          </v-expansion-panel>
         </v-expansion-panels>
       </v-list>
+
+      <!-- <v-list outlined>
+        <v-list-item>
+          <router-link :to="{ name: 'AboutUs' }">{{
+            $t("nav.aboutUs")
+          }}</router-link>
+        </v-list-item>
+        <v-list-group no-action>
+          <template v-slot:activator>
+            <v-list-item-content
+              :class="{ 'panel-active': $route.path.indexOf('/news/') > -1 }"
+            >
+              <v-list-item-title>{{ $t("nav.news") }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="item in newsMenuList"
+            :key="item.title"
+            :to="{ name: item.router }"
+          >
+            <v-list-item-content>
+              <v-list-item-title>{{ $t(`nav.${item.lan}`) }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group no-action>
+          <template v-slot:activator>
+            <v-list-item-content
+              :class="{ 'panel-active': $route.path.indexOf('/brands/') > -1 }"
+            >
+              <v-list-item-title>{{ $t("nav.brands") }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="item in brandMenuList"
+            :key="item.title"
+            :to="{ path: '/brands/' + item.id }"
+          >
+            <v-list-item-avatar tile>
+              <v-img :src="item.avatar" contain></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group no-action>
+          <template v-slot:activator>
+            <v-list-item-content
+              :class="{ 'panel-active': $route.path.indexOf('/authorization/') > -1 }"
+            >
+              <v-list-item-title>{{ $t("nav.authorized") }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="item in brandMenuList"
+            :key="item.title"
+            :to="{ path: '/authorization/' + item.id }"
+          >
+            <v-list-item-avatar tile>
+              <v-img :src="item.avatar" contain></v-img>
+            </v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-item>
+          <router-link :to="{ name: 'SecurityVerification' }">{{
+            $t("nav.protect")
+          }}</router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link :to="{ name: 'JoinUs' }">{{
+            $t("nav.join")
+          }}</router-link>
+        </v-list-item>
+      </v-list> -->
     </v-navigation-drawer>
   </v-app>
 </template>
@@ -154,27 +234,23 @@ export default {
 
   data: () => ({
     drawer: null,
-    items: [
-      { title: "Home", icon: "mdi-view-dashboard" },
-      { title: "About", icon: "mdi-forum" },
-    ],
-    brandList: [],
-    newsList: [
+    brandMenuList: [],
+    newsMenuList: [
       {
         title: "企业公告",
         lan: "enterpriseBulletin",
         router: "EnterpriseNews",
       },
-      { title: "公司动态", lan: "companyNews", router: "CompanyNews" },
+      {
+        title: "公司动态",
+        lan: "companyNews",
+        router: "CompanyNews",
+      },
     ],
+    panel: "",
   }),
 
   mounted() {
-    if (this._isMobile()) {
-      localStorage.setItem("isMobile", true);
-    } else {
-      localStorage.setItem("isMobile", false);
-    }
     this.getBrands();
   },
 
@@ -200,7 +276,7 @@ export default {
     getBrands: function () {
       let _this = this;
       getBrandsList().then((res) => {
-        _this.brandList = res.data;
+        _this.brandMenuList = res.data;
       });
     },
   },
@@ -208,6 +284,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.v-navigation-drawer__content {
+  width: 100%;
+}
 .v-btn--example {
   position: fixed;
   top: 80%;
@@ -215,7 +294,7 @@ export default {
   opacity: 0.6;
 }
 .drawer-menu {
-  .active {
+  .panel-active {
     color: #ff9822;
   }
   .router-link-active {
@@ -223,8 +302,6 @@ export default {
   }
   a {
     color: #242424;
-  }
-  .v-list-item--link:before {
   }
   .v-list .v-list-item--active {
     color: #ff9822;

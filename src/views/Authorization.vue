@@ -76,7 +76,9 @@ export default {
   }),
   watch: {
     $route(to, from) {
-      this.id = to.params.type;
+      if (to.params.type) {
+        this.id = to.params.type;
+      }
       return this.getBrandsData();
     },
   },
