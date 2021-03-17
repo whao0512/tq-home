@@ -16,7 +16,7 @@
     <div app class="black pt-23 pb-28">
       <app-footer></app-footer>
     </div>
-    <v-btn
+    <!-- <v-btn
       fab
       large
       dark
@@ -26,7 +26,7 @@
       @click.stop="drawer = !drawer"
     >
       <v-icon>mdi-share-variant</v-icon>
-    </v-btn>
+    </v-btn> -->
     <v-navigation-drawer
       class="drawer-menu"
       v-model="drawer"

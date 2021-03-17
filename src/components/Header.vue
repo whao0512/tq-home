@@ -115,17 +115,20 @@
         </div>
       </div>
     </v-container>
-    <v-container class="d-md-none d-sm-flex d-flex header">
+    <v-container class="d-md-none d-sm-flex d-flex header pa-0">
+      <div class="menu-area" @click.stop="drawer = !drawer">
+        <span class="icon-menu"></span>
+      </div>
       <div
         class="d-flex"
-        style="margin: 0 auto"
+        style="margin-left: 30px; padding: 15px 0"
         @click="
           () => {
             this.$router.push('/');
           }
         "
       >
-        <v-avatar tile class="mr-5">
+        <v-avatar tile class="mr-3" size="30">
           <v-img
             :src="require('@/assets/images/home/logo/logo@2x.png')"
           ></v-img>
@@ -138,6 +141,204 @@
         </div>
       </div>
     </v-container>
+    <v-navigation-drawer
+      class="drawer-menu"
+      v-model="drawer"
+      fixed
+      temporary
+      color="#ff9822"
+    >
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>菜单</v-list-item-title>
+        </v-list-item-content>
+        <v-list-item-icon @click.stop="drawer = !drawer">
+          <v-icon color="white">mdi-close-circle</v-icon>
+        </v-list-item-icon>
+      </v-list-item>
+      <!-- <v-list dense>
+        <v-expansion-panels v-model="panel" accordion>
+          <v-expansion-panel>
+            <v-expansion-panel-header hide-actions>
+              <router-link :to="{ name: 'AboutUs' }">{{
+                $t("nav.aboutUs")
+              }}</router-link>
+            </v-expansion-panel-header>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header
+              :class="{ 'panel-active': $route.path.indexOf('/news/') > -1 }"
+            >
+              {{ $t("nav.news") }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content eager>
+              <v-list dense class="head-menu-list">
+                <v-list-item-group color="primary">
+                  <v-list-item
+                    v-for="item in newsMenuList"
+                    :key="item.title"
+                    :to="{ name: item.router }"
+                  >
+                    <v-list-item-title>
+                      {{ $t(`nav.${item.lan}`) }}</v-list-item-title
+                    >
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header
+              :class="{ 'panel-active': $route.path.indexOf('/brands/') > -1 }"
+            >
+              {{ $t("nav.brands") }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content eager>
+              <v-list dense class="head-menu-list">
+                <v-list-item-group color="primary">
+                  <v-list-item
+                    v-for="(item, index) in brandList"
+                    :key="index"
+                    :to="{ path: '/brands/' + item.id }"
+                  >
+                    <v-list-item-avatar tile>
+                      <v-img :src="item.avatar"></v-img>
+                    </v-list-item-avatar>
+                    <v-list-item-title>{{ item.title }} </v-list-item-title>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header
+              :class="{
+                'panel-active': $route.path.indexOf('/authorization') > -1,
+              }"
+            >
+              {{ $t("nav.authorized") }}
+            </v-expansion-panel-header>
+            <v-expansion-panel-content eager>
+              <v-list dense class="head-menu-list">
+                <v-list-item-group color="primary">
+                  <v-list-item
+                    v-for="item in brandList"
+                    :key="item.title"
+                    :to="{ path: '/authorization/' + item.id }"
+                  >
+                    <v-list-item-avatar tile>
+                      <v-img :src="item.avatar"></v-img>
+                    </v-list-item-avatar>
+                    <v-list-item-title>{{ item.title }} </v-list-item-title>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header hide-actions>
+              <router-link :to="{ name: 'SecurityVerification' }">{{
+                $t("nav.protect")
+              }}</router-link>
+            </v-expansion-panel-header>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header hide-actions>
+              <router-link :to="{ name: 'JoinUs' }">{{
+                $t("nav.join")
+              }}</router-link>
+            </v-expansion-panel-header>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-list> -->
+
+      <v-list subheader class="pa-0">
+        <v-list-item>
+          <router-link :to="{ name: 'AboutUs' }">{{
+            $t("nav.aboutUs")
+          }}</router-link>
+        </v-list-item>
+        <v-list-group no-action append-icon="mdi-arrow-down-drop-circle-outline">
+          <template v-slot:activator>
+            <v-list-item-content
+              :class="{ 'panel-active': $route.path.indexOf('/news/') > -1 }"
+            >
+              <v-list-item-title>{{ $t("nav.news") }}</v-list-item-title>
+            </v-list-item-content>
+            <!-- <v-list-item-icon>
+              <v-icon>mdi-play-circle-outline</v-icon>
+            </v-list-item-icon> -->
+          </template>
+
+          <v-list-item
+            v-for="item in newsList"
+            :key="item.title"
+            :to="{ name: item.router }"
+          >
+            <v-list-item-content>
+              <v-list-item-title>{{ $t(`nav.${item.lan}`) }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group no-action append-icon="mdi-arrow-down-drop-circle-outline">
+          <template v-slot:activator>
+            <v-list-item-content
+              :class="{ 'panel-active': $route.path.indexOf('/brands/') > -1 }"
+            >
+              <v-list-item-title>{{ $t("nav.brands") }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="item in brandList"
+            :key="item.title"
+            :to="{ path: '/brands/' + item.id }"
+          >
+            <!-- <v-list-item-avatar tile>
+              <v-img :src="item.avatar" contain></v-img>
+            </v-list-item-avatar> -->
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group no-action append-icon="mdi-arrow-down-drop-circle-outline"> 
+        <!-- <v-list-group no-action append-icon="mdi-expand_more">  -->
+          <template v-slot:activator>
+            <v-list-item-content
+              :class="{
+                'panel-active': $route.path.indexOf('/authorization/') > -1,
+              }"
+            >
+              <v-list-item-title>{{ $t("nav.authorized") }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+
+          <v-list-item
+            v-for="item in brandList"
+            :key="item.title"
+            :to="{ path: '/authorization/' + item.id }"
+          >
+            <!-- <v-list-item-avatar tile>
+              <v-img :src="item.avatar" contain></v-img>
+            </v-list-item-avatar> -->
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+        <v-list-item>
+          <router-link :to="{ name: 'SecurityVerification' }">{{
+            $t("nav.protect")
+          }}</router-link>
+        </v-list-item>
+        <v-list-item>
+          <router-link :to="{ name: 'JoinUs' }">{{
+            $t("nav.join")
+          }}</router-link>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </div>
 </template>
 <script>
@@ -155,6 +356,20 @@ export default {
       { title: "公司动态", lan: "companyNews", router: "CompanyNews" },
     ],
     language: "",
+    drawer: null,
+    newsList: [
+      {
+        title: "企业公告",
+        lan: "enterpriseBulletin",
+        router: "EnterpriseNews",
+      },
+      {
+        title: "公司动态",
+        lan: "companyNews",
+        router: "CompanyNews",
+      },
+    ],
+    panel: "",
   }),
   mounted() {
     this.getBrands();
@@ -245,6 +460,7 @@ export default {
 
 @media screen and (max-width: 959px) {
   .header {
+    height: 60px;
     color: #fff;
     .active {
       background-color: #ff9822;
@@ -279,12 +495,31 @@ export default {
     }
 
     .company-name {
-      font-size: 20px;
+      font-size: 14px;
 
       &_en {
         font-family: Source Han Sans CN;
-        font-size: 15px;
+        font-size: 10px;
       }
+    }
+    .menu-area {
+      width: 60px;
+      line-height: 70px;
+      text-align: center;
+      background-color: #ff9822;
+    }
+
+    .icon-menu {
+      display: inline-block;
+      width: 30px;
+      height: 3px;
+      padding: 6px 0;
+      border-top: 3px solid;
+      border-bottom: 3px solid;
+      border-color: #fff;
+      background-color: #fff;
+      background-clip: content-box;
+      box-sizing: content-box;
     }
 
     .language {
@@ -320,5 +555,50 @@ export default {
   height: 12px;
   font-family: Source Han Sans CN;
   color: #8c8c8c !important;
+}
+
+.drawer-menu {
+  .panel-active {
+    color: #c36900;
+  }
+  .router-link-active {
+    color: #c36900;
+  }
+  a {
+    color: #fff;
+  }
+  .v-list-item > a,
+  .v-list-item__title {
+    color: #fff;
+  }
+
+  .v-list-group--active {
+    background-color: #c36900;
+  }
+  .v-list-item {
+    border-bottom: 1px solid #fff;
+  }
+  .v-list-item.v-list-item--link {
+    color: #ff9822;
+    border-bottom: 1px solid #fff;
+  }
+
+  .v-list-item--active.v-list-item.v-list-item--link {
+    background-color: #fff;
+    .v-list-item__title {
+      color: #ff9822;
+    }
+  }
+
+  .v-list-group__header.v-list-item.v-list-item--active.v-list-item--link {
+    background-color: #c36900;
+    .v-list-item__title {
+      color: #fff;
+    }
+  }
+
+  .v-list-item__icon.v-list-group__header__append-icon>i {
+    color: #fff;
+  }
 }
 </style>

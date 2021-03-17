@@ -63,7 +63,7 @@
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-left px-8"
                           style="height: 100%"
                           v-bind:style="{ 'background-color': item.randomBg }"
                         >
@@ -115,7 +115,7 @@
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-left px-8"
                           style="height: 100%"
                           v-bind:style="{ 'background-color': item.randomBg }"
                         >
@@ -165,7 +165,7 @@
                       <v-expand-transition>
                         <div
                           v-if="hover"
-                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-center px-8"
+                          class="d-flex transition-fast-in-fast-out v-card--reveal white--text text-left px-8"
                           v-bind:style="{ 'background-color': item.randomBg }"
                           style="height: 100%"
                         >
